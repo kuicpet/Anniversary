@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Anniversary, Morenike Umujeyan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #c9506b;
+    --blush: #fdeff2;
+    --gold: #c9a24b;
+    --ink: #3b2a30;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Montserrat', sans-serif; color: var(--ink); background: var(--blush); line-height: 1.7; }
+  h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 500; }
+  section { padding: 90px 20px; max-width: 1000px; margin: auto; text-align: center; }
+  h2 { font-size: 2.2rem; color: var(--rose); margin-bottom: 40px; }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    background: linear-gradient(rgba(60,20,35,.55), rgba(60,20,35,.55)),
+      url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=1600') center/cover;
+    color: #fff; max-width: none; position: relative;
+  }
+  .hero h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); font-style: italic; }
+  .hero p { font-size: 1.3rem; margin-top: 15px; letter-spacing: 2px; font-weight: 300; }
+  .hero a {
+    margin-top: 40px; padding: 12px 32px; border: 1px solid #fff; color: #fff;
+    text-decoration: none; border-radius: 40px; transition: .3s;
+  }
+  .hero a:hover { background: #fff; color: var(--rose); }
+
+  /* Counter */
+  .counter { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+  .counter div {
+    background: #fff; border-radius: 16px; padding: 25px 30px; min-width: 120px;
+    box-shadow: 0 8px 25px rgba(201,80,107,.15);
+  }
+  .counter span { display: block; font-family: 'Playfair Display', serif; font-size: 2.6rem; color: var(--rose); }
+  .counter small { text-transform: uppercase; letter-spacing: 2px; font-size: .75rem; }
+
+  /* Timeline */
+  .timeline { position: relative; text-align: left; }
+  .timeline::before {
+    content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--gold); transform: translateX(-50%);
+  }
+  .event { width: 50%; padding: 0 40px 50px; position: relative; opacity: 0; transform: translateY(30px); transition: .8s; }
+  .event.show { opacity: 1; transform: none; }
+  .event:nth-child(odd) { text-align: right; }
+  .event:nth-child(even) { margin-left: 50%; }
+  .event::after {
+    content: '♥'; position: absolute; top: 0; color: var(--rose); background: var(--blush); font-size: 1.5rem;
+  }
+  .event:nth-child(odd)::after { right: -10px; }
+  .event:nth-child(even)::after { left: -10px; }
+  .event time { color: var(--gold); font-size: .9rem;font-style: bold; letter-spacing: 2px; text-transform: uppercase; }
+  .event h3 { font-size: 1.4rem; margin: 5px 0; }
+
+  /* Gallery */
+  .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 15px; }
+  .gallery img {
+    width: 100%; height: 280px; object-fit: cover; border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.15); transition: .4s;
+  }
+  .gallery img:hover { transform: scale(1.04) rotate(-1deg); }
+
+  /* Reasons */
+  .reasons { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .reason { background: #fff; padding: 30px 20px; border-radius: 14px; box-shadow: 0 5px 18px rgba(0,0,0,.08); }
+  .reason b { color: var(--rose); font-family: 'Playfair Display', serif; font-size: 2rem; display: block; }
+
+  /* Letter */
+  .letter {
+    background: #fff; padding: 50px 40px; border-radius: 6px; text-align: left; max-width: 700px; margin: auto;
+    box-shadow: 0 10px 40px rgba(0,0,0,.12); border-left: 5px solid var(--rose);
+    font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.15rem;
+  }
+  .letter p { margin-bottom: 18px; }
+  .sign { text-align: right; color: var(--ink); }
+
+  footer { background: var(--rose); color: #fff; padding: 40px 20px; text-align: center; max-width: none; }
+
+  /* Floating hearts */
+  .heart { position: fixed; bottom: -30px; color: var(--rose); opacity: .6; animation: float linear forwards; pointer-events: none; z-index: 10; }
+  @keyframes float { to { transform: translateY(-110vh) rotate(40deg); opacity: 0; } }
+
+  @media (max-width: 700px) {
+    .timeline::before { left: 10px; }
+    .event, .event:nth-child(even) { width: 100%; margin-left: 0; padding-left: 40px; padding-right: 0; text-align: left; }
+    .event:nth-child(odd)::after, .event:nth-child(even)::after { left: 0; right: auto; }
+  }
+
+  /* Surprise */
+  .surprise{display:none;text-align:center;background:#fff;padding:35px;border-radius:22px}
+  .btn{border:0;background:#8d3048;color:white;padding:14px 25px;border-radius:30px;font-size:16px;cursor:pointer;margin-top:18px}
+  #surprise{animation:surpriseIn 1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes surpriseIn{from{opacity:0;transform:scale(.75) rotate(-2deg)}to{opacity:1;transform:none}}
+.confetti{position:fixed;top:-20px;z-index:100;pointer-events:none;animation:confettiFall 3.2s linear forwards}
+@keyframes confettiFall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <p>HAPPY ANNIVERSARY</p>
+  <h1>Morenike</h1>
+  <p>Every day with you is my favorite day</p>
+  <a href="#together">Our Story ↓</a>
+</section>
+
+<!-- TIME TOGETHER -->
+<section id="together">
+  <h2>Our Time Together</h2>
+  <div class="counter" id="counter"></div>
+</section>
+
+<!-- TIMELINE -->
+<section>
+  <h2>Our Beautiful Journey So Far...</h2>
+  <div class="timeline">
+    <div class="event"><time>October 2007</time><h3>The Day We Met</h3><p>Nanka,Anambra State.</p></div>
+    <!--<div class="event"><time>December 2015</time><h3>Our First Date</h3><p>Where we went and what I remember most.</p></div>-->
+    <div class="event"><time>April 2008</time><h3>Moving In Together</h3><p>The start of everything.</p></div>
+    <!--<div class="event"><time>May 2020</time><h3>The Proposal</h3><p>The easiest question I've ever asked.</p></div>-->
+    <div class="event"><time>October 2014</time><h3>We Said "I Do"</h3><p>Officially a Couple.</p></div>
+    <div class="event"><time>September 2015</time><h3>Arrival of our bundle of Joy</h3><p>Our Family growing</p></div>
+    <div class="event"><time>Today</time><h3>Another chapter.</h3><p> 
+
+        And still,
+        the person I want beside me
+        is you.</p></div>
+    
+
+  </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="photos">
+  <h2>Our Memories</h2>
+  <div class="gallery">
+    <!-- Replace these with your own photos, e.g. src="photos/us1.jpg" -->
+    <img src="./images/IMG_20261002_174201.jpg" alt="Memory 5">
+     <img src="./images/IMG_20261002_175129.jpg" alt="Memory 8">
+    <img src="./images/IMG_20261002_175851.jpg" alt="Memory 4">
+    <img src="./images/IMG-20260712-WA0047.jpg" alt="Memory 4">
+    <img src="./images/IMG_20261002_174350.jpg" alt="Memory 6">
+    <img src="./images/IMG_20261002_174810.jpg" alt="Memory 7">
+    <img src="./images/IMG-20260712-WA0019.jpg" alt="Memory 3">
+    <img src="./images/IMG-20260712-WA0006.jpg" alt="Memory 1">
+    <img src="./images/IMG-20260712-WA0014.jpg" alt="Memory 2">
+  </div>
+</section>
+
+<!-- REASONS -->
+ <!--
+<section>
+  <h2>Reasons I Love You</h2>
+  <div class="reasons">
+    <div class="reason"><b>1</b>The way you laugh at my terrible jokes.</div>
+    <div class="reason"><b>2</b>Your kindness to everyone you meet.</div>
+    <div class="reason"><b>3</b>How you make any place feel like home.</div>
+    <div class="reason"><b>4</b>Your strength, even when you don't see it.</div>
+    <div class="reason"><b>5</b>You believe in me, always.</div>
+    <div class="reason"><b>6</b>Add your own reason here.</div>
+  </div>
+</section>
+-->
+<!-- LETTER -->
+<section>
+  <h2>A Letter For You</h2>
+  <div class="letter">
+    <p>My dearest Morenike,</p>
+    <p>When I look back at everything we have shared, I realize that the most beautiful part of my life has not been a particular day or achievement.</p>
+    <p>it has been having you beside me.</p>
+    <p>Thank you for the laughter,the patience, the friendship, the difficult days wwe survived, and the beautiful days we created together.</p>
+    <p>I would choose you again</p>
+    <p>And if life gives us many more years together,I hope we continue to laugh together, grow together, support each other and create memories that we will one day look back on with grateful hearts.</p>
+    <p>Thank you for being my partner, my best friend, and my home. I love you more today than ever.</p>
+    <p>Happy Anniversary my love. ♥ </p>
+    <p class="sign">Forever yours,<br>Kingsley</p>
+  </div>
+</section>
+
+<!--Reveal-->
+<section class="reveal">
+  <div class="surprise" id="surprise">
+    <div style="font-size:50px">❤️</div>
+    <h2>One More Thing...</h2>
+    <p style="font-size:21px">My favourite place in this world isn't a particular location.</p>
+    <p style="font-size:27px;color:#8d3048"><strong>It's wherever I am with you.</strong></p>
+    <p>Happy Anniversary, Morenike.</p>
+  </div>
+  <div style="text-align:center">
+    <button class="btn" onclick="document.getElementById('surprise').style.display='block';this.style.display='none'">Tap For Your Surprise 💝</button>
+  </div>
+</section>
+<footer>
+  <h3>Happy 12th Anniversary ♥</h3>
+  <p>Kizo &amp; More</p>
+</footer>
+
+<script>
+  // ====== EDIT THIS: your anniversary / start date ======
+  const startDate = new Date('2014-10-02T00:00:00');
+
+  const counter = document.getElementById('counter');
+  function updateCounter() {
+    const now = new Date();
+    let years = now.getFullYear() - startDate.getFullYear();
+    let anniv = new Date(startDate); anniv.setFullYear(startDate.getFullYear() + years);
+    if (anniv > now) { years--; anniv.setFullYear(anniv.getFullYear() - 1); }
+    const diff = now - anniv;
+    const days = Math.floor(diff / 864e5);
+    const hours = Math.floor(diff / 36e5) % 24;
+    const mins = Math.floor(diff / 6e4) % 60;
+    const secs = Math.floor(diff / 1e3) % 60;
+    counter.innerHTML = [[years,'Years'],[days,'Days'],[hours,'Hours'],[mins,'Minutes'],[secs,'Seconds']]
+      .map(([n,l]) => `<div><span>${n}</span><small>${l}</small></div>`).join('');
+  }
+  updateCounter(); setInterval(updateCounter, 1000);
+
+  // Fade in timeline events on scroll
+  const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('show')), {threshold: .2});
+  document.querySelectorAll('.event').forEach(el => io.observe(el));
+
+  // Floating hearts
+  setInterval(() => {
+    const h = document.createElement('div');
+    h.className = 'heart'; 
+     h.textContent=['❤','♡','♥','💗'][Math.floor(Math.random()*4)];
+    h.style.left = Math.random() * 100 + 'vw';
+    h.style.fontSize = 14 + Math.random() * 20 + 'px';
+    h.style.animationDuration = 6 + Math.random() * 5 + 's';
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 11000);
+  }, 700);
+
+  /* Anniversary confetti when the surprise is opened */
+const surpriseBtn=document.querySelector('button[onclick*="surprise"]');
+if(surpriseBtn){
+  surpriseBtn.addEventListener('click',()=>{
+    if(reduceMotion) return;
+    for(let i=0;i<75;i++){
+      const c=document.createElement('span');
+      c.className='confetti';
+      c.textContent=['❤','✦','•','♥'][Math.floor(Math.random()*4)];
+      c.style.left=Math.random()*100+'vw';
+      c.style.fontSize=(10+Math.random()*15)+'px';
+      c.style.animationDelay=(Math.random()*.9)+'s';
+      c.style.animationDuration=(2.4+Math.random()*1.8)+'s';
+      document.body.appendChild(c);
+      setTimeout(()=>c.remove(),5000);
+    }
+  });
+}
+</script>
+</body>
+</html>
