@@ -570,6 +570,9 @@
         transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
       }
 
+      @media (max-width: 600px) {
+      }
+
       .photo:hover img {
         transform: scale(1.08);
       }
@@ -703,7 +706,7 @@
       /* =====================================================
    SURPRISE
 ===================================================== */
-/*
+      /*
       .surprise-section {
         min-height: 75vh;
         display: flex;
@@ -778,160 +781,156 @@
    SURPRISE SECTION
 ================================ */
 
-.surprise-section {
-  position: relative;
-  padding: 140px 20px;
-  text-align: center;
-  overflow: hidden;
-}
+      .surprise-section {
+        position: relative;
+        padding: 140px 20px;
+        text-align: center;
+        overflow: hidden;
+      }
 
-.surprise-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
+      .surprise-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
 
-/* BUTTON */
-.surprise-btn {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
+      /* BUTTON */
+      .surprise-btn {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
 
-  margin-top: 30px;
-  padding: 16px 30px;
+        margin-top: 30px;
+        padding: 16px 30px;
 
-  border: none;
-  border-radius: 50px;
+        border: none;
+        border-radius: 50px;
 
-  background: #111;
-  color: white;
+        background: #111;
+        color: white;
 
-  font-family: inherit;
-  font-size: 15px;
-  font-weight: 600;
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 600;
 
-  cursor: pointer;
+        cursor: pointer;
 
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
 
-.surprise-btn:hover {
-  transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
-}
+      .surprise-btn:hover {
+        transform: translateY(-4px) scale(1.03);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+      }
 
-.surprise-btn:active {
-  transform: scale(0.96);
-}
+      .surprise-btn:active {
+        transform: scale(0.96);
+      }
 
-.btn-heart {
-  color: #e85d75;
-  font-size: 18px;
-}
+      .btn-heart {
+        color: #e85d75;
+        font-size: 18px;
+      }
 
-
-/* =================================
+      /* =================================
    IMPORTANT:
    REVEAL IS COMPLETELY HIDDEN
 ================================= */
 
-.surprise-reveal {
-  display: none;
+      .surprise-reveal {
+        display: none;
 
-  opacity: 0;
-  visibility: hidden;
+        opacity: 0;
+        visibility: hidden;
 
-  max-width: 650px;
-  margin: 60px auto 0;
+        max-width: 650px;
+        margin: 60px auto 0;
 
-  transform: translateY(40px) scale(0.95);
-}
+        transform: translateY(40px) scale(0.95);
+      }
 
-
-/* =================================
+      /* =================================
    ONLY SHOW AFTER .show IS ADDED
 ================================= */
 
-.surprise-reveal.show {
-  display: block;
+      .surprise-reveal.show {
+        display: block;
 
-  visibility: visible;
+        visibility: visible;
 
-  animation: surpriseReveal 1.2s cubic-bezier(.16, 1, .3, 1) forwards;
-}
+        animation: surpriseReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
 
+      @keyframes surpriseReveal {
+        0% {
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(40px) scale(0.95);
+        }
 
-@keyframes surpriseReveal {
-  0% {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(40px) scale(0.95);
-  }
+        60% {
+          opacity: 1;
+          transform: translateY(-8px) scale(1.02);
+        }
 
-  60% {
-    opacity: 1;
-    transform: translateY(-8px) scale(1.02);
-  }
+        100% {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0) scale(1);
+        }
+      }
 
-  100% {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scale(1);
-  }
-}
+      /* HEART */
 
+      .reveal-heart {
+        font-size: 55px;
+        color: #e85d75;
+        margin-bottom: 20px;
 
-/* HEART */
+        animation: heartBeat 1.5s ease-in-out infinite;
+      }
 
-.reveal-heart {
-  font-size: 55px;
-  color: #e85d75;
-  margin-bottom: 20px;
+      @keyframes heartBeat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
 
-  animation: heartBeat 1.5s ease-in-out infinite;
-}
+        50% {
+          transform: scale(1.18);
+        }
+      }
 
-@keyframes heartBeat {
-  0%, 100% {
-    transform: scale(1);
-  }
+      /* REVEAL TEXT */
 
-  50% {
-    transform: scale(1.18);
-  }
-}
+      .surprise-reveal h3 {
+        margin-bottom: 20px;
 
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(32px, 5vw, 48px);
+      }
 
-/* REVEAL TEXT */
+      .surprise-reveal p {
+        font-size: 18px;
+        line-height: 1.8;
+      }
 
-.surprise-reveal h3 {
-  margin-bottom: 20px;
+      .surprise-reveal .forever {
+        margin-top: 30px;
 
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(32px, 5vw, 48px);
-}
+        font-family: 'Great Vibes', cursive;
+        font-size: 32px;
+      }
 
-.surprise-reveal p {
-  font-size: 18px;
-  line-height: 1.8;
-}
+      .signature {
+        margin-top: 15px;
 
-.surprise-reveal .forever {
-  margin-top: 30px;
-
-  font-family: "Great Vibes", cursive;
-  font-size: 32px;
-}
-
-.signature {
-  margin-top: 15px;
-
-  font-family: "Cormorant Garamond", serif;
-  font-size: 20px;
-  font-style: italic;
-}
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 20px;
+        font-style: italic;
+      }
 
       /* =====================================================
    FOOTER
@@ -1068,7 +1067,18 @@
         }
 
         .gallery {
-          columns: 2 140px;
+          width: 100%;
+          padding: 0 12px;
+          display: flex;
+          flex-direction: column;
+        }
+        .photo img {
+          width: 100%;
+          height: auto;
+          max-width: 100%;
+          object-fit: contain;
+          display: block;
+          transform: none !important;
         }
       }
 
@@ -1337,7 +1347,7 @@
     <!-- =====================================================
      SURPRISE
 ===================================================== -->
-<!--
+    <!--
     <section class="surprise-section">
       <div id="surprise">
         <div class="surprise-heart">❤️</div>
@@ -1356,34 +1366,33 @@
       </button>
     </section>-->
     <section class="surprise-section" id="surprise">
-  <div class="surprise-content">
-    <p class="eyebrow">One more thing...</p>
+      <div class="surprise-content">
+        <p class="eyebrow">One more thing...</p>
 
-    <h2>For You, My Love ❤️</h2>
+        <h2>For You, My Love ❤️</h2>
 
-    <button class="surprise-btn" id="surpriseBtn" type="button">
-      <span>Open Your Surprise</span>
-      <span class="btn-heart">♥</span>
-    </button>
+        <button class="surprise-btn" id="surpriseBtn" type="button">
+          <span>Open Your Surprise</span>
+          <span class="btn-heart">♥</span>
+        </button>
 
-    <!-- Hidden until button is clicked -->
-    <div class="surprise-reveal" id="surpriseReveal" aria-hidden="true">
-      <div class="reveal-heart">♥</div>
+        <!-- Hidden until button is clicked -->
+        <div class="surprise-reveal" id="surpriseReveal" aria-hidden="true">
+          <div class="reveal-heart">♥</div>
 
-      <h3>After all these years...</h3>
+          <h3>After all these years...</h3>
 
-      <p>
-        I would still choose you.
-        In every lifetime, every season,
-        and every version of our story.
-      </p>
+          <p>
+            I would still choose you. In every lifetime, every season, and every
+            version of our story.
+          </p>
 
-      <p class="forever">Forever yours, Morenike.</p>
+          <p class="forever">Forever yours, Morenike.</p>
 
-      <div class="signature">— Kingsley</div>
-    </div>
-  </div>
-</section>
+          <div class="signature">— Kingsley</div>
+        </div>
+      </div>
+    </section>
 
     <!-- =====================================================
      FOOTER
@@ -1621,7 +1630,7 @@
    SURPRISE
 ===================================================== */
 
-    /*  const surpriseButton = document.getElementById('surpriseButton')
+      /*  const surpriseButton = document.getElementById('surpriseButton')
 
       const surprise = document.getElementById('surprise')
 
@@ -1639,23 +1648,23 @@
           block: 'center',
         })
       })*/
-     const surpriseBtn = document.getElementById("surpriseBtn");
-const surpriseReveal = document.getElementById("surpriseReveal");
+      const surpriseBtn = document.getElementById('surpriseBtn')
+      const surpriseReveal = document.getElementById('surpriseReveal')
 
-if (surpriseBtn && surpriseReveal) {
-  surpriseBtn.addEventListener("click", () => {
-    surpriseReveal.classList.add("show");
+      if (surpriseBtn && surpriseReveal) {
+        surpriseBtn.addEventListener('click', () => {
+          surpriseReveal.classList.add('show')
 
-    surpriseReveal.setAttribute("aria-hidden", "false");
+          surpriseReveal.setAttribute('aria-hidden', 'false')
 
-    surpriseBtn.style.display = "none";
+          surpriseBtn.style.display = 'none'
 
-    // Trigger confetti if your confetti function exists
-    if (typeof createConfetti === "function") {
-      createConfetti();
-    }
-  });
-}
+          // Trigger confetti if your confetti function exists
+          if (typeof createConfetti === 'function') {
+            createConfetti()
+          }
+        })
+      }
 
       /* =====================================================
    CONFETTI
